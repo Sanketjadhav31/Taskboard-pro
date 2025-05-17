@@ -1,0 +1,4069 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Base Styles */
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary-color: #64748b;
+  --secondary-hover: #475569;
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --text-color: #1e293b;
+  --text-light: #64748b;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-full: 9999px;
+  --header-height: 64px;
+  --sidebar-width: 250px;
+}
+
+.dark {
+  /* Primary colors with better contrast for dark mode */
+  --primary-color: #818cf8; /* Lighter indigo for better visibility */
+  --primary-hover: #6366f1;
+  /* Secondary colors with better visibility */
+  --secondary-color: #94a3b8;
+  --secondary-hover: #64748b;
+  /* Status colors adjusted for dark mode */
+  --danger-color: #f87171; /* Lighter red */
+  --danger-hover: #ef4444;
+  --success-color: #34d399; /* Lighter green */
+  --warning-color: #fbbf24; /* Lighter amber */
+  /* Text and background colors */
+  --text-color: #e2e8f0; /* Light gray for main text */
+  --text-light: #94a3b8; /* Medium gray for secondary text */
+  --bg-color: #0f172a; /* Deep blue-gray for main background */
+  --card-bg: #1e293b; /* Lighter blue-gray for cards */
+  --border-color: #334155; /* Border color with enough contrast */
+  /* Shadows with higher opacity for visibility in dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Additional dark mode specific classes for common components */
+.dark .linear-card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark .linear-input {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.dark .linear-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.dark .linear-input::placeholder {
+  color: #64748b;
+}
+
+.dark .linear-btn {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.dark .linear-btn-primary {
+  background-color: var(--primary-color);
+  color: #f8fafc;
+}
+
+.dark .linear-btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.dark .linear-btn-secondary {
+  background-color: var(--secondary-color);
+  color: #f8fafc;
+}
+
+.dark .linear-btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+.dark .linear-btn-danger {
+  background-color: var(--danger-color);
+  color: #f8fafc;
+}
+
+.dark .linear-avatar {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.dark .linear-badge {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.dark .linear-modal-content {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark .linear-dropdown {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark .linear-dropdown-item:hover {
+  background-color: #334155;
+}
+
+/* Dark mode styles for task cards and related components */
+.dark .task-card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .task-card:hover {
+  background-color: #2a3548; /* Slightly lighter than the dark card background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dark .task-list {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark .task-list-header {
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark .task-list-item {
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark .task-list-item:hover {
+  background-color: #2a3548; /* Slightly lighter than the dark card background */
+}
+
+.dark .board-column {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark .column-header {
+  border-color: var(--border-color);
+}
+
+.dark .empty-column {
+  border-color: var(--border-color);
+  color: var(--text-light);
+}
+
+.dark .task-card .task-title {
+  color: var(--text-color);
+}
+
+.dark .task-card .task-description {
+  color: var(--text-light);
+}
+
+.dark .task-meta {
+  color: var(--text-light);
+}
+
+.dark .task-card .task-footer {
+  border-top-color: var(--border-color);
+}
+
+.dark .priority-badge.high {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.dark .priority-badge.medium {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.dark .priority-badge.low {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.dark .status-badge.to-do,
+.dark .status-badge.backlog {
+  background-color: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+}
+
+.dark .status-badge.in-progress {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+}
+
+.dark .status-badge.done,
+.dark .status-badge.completed {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.dark .task-due-date {
+  color: var(--text-light);
+}
+
+.dark .task-due-date .overdue {
+  color: #f87171;
+}
+
+.dark .avatar-xs,
+.dark .avatar-sm,
+.dark .avatar-md {
+  background-color: #374151;
+  color: #e2e8f0;
+}
+
+.dark .status-select {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #e2e8f0;
+}
+
+/* Dark mode styles for project components */
+.dark .project-card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark .project-card:hover {
+  background-color: #2a3548;
+}
+
+/* Dark mode styles for team member components */
+.dark .linear-member-list {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark .linear-member-card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark .linear-member-card:hover {
+  background-color: #2a3548;
+}
+
+.dark .linear-member-name {
+  color: var(--text-color);
+}
+
+.dark .linear-member-email {
+  color: var(--text-light);
+}
+
+.dark .linear-member-role {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Fix any white backgrounds in chat components */
+.dark .chat-container {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Layout */
+.app {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.dark .app {
+  background-color: var(--bg-color);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  transition: margin-left 0.3s ease;
+  background-color: var(--bg-color);
+}
+
+.dark .main-content {
+  background-color: var(--bg-color);
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: 64px;
+}
+
+.dark .sidebar-collapsed .main-content {
+  background-color: var(--bg-color);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--sidebar-width);
+  height: var(--header-height);
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 10;
+  transition: left 0.3s ease;
+  width: auto;
+}
+
+.dark .header {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.sidebar-collapsed .header {
+  left: 64px;
+  width: calc(100% - 64px);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 1rem;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  margin-right: 0.5rem;
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+  z-index: 20;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+}
+
+.dark .sidebar {
+  background-color: var(--card-bg);
+}
+
+.sidebar-collapsed .sidebar {
+  width: 64px;
+}
+
+.dark .sidebar-collapsed .sidebar {
+  background-color: var(--card-bg);
+}
+
+.sidebar-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-collapsed .sidebar-header {
+  padding: 0 1rem;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+.sidebar-collapsed .logo-text {
+  display: none;
+}
+
+.sidebar-toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+    border-radius: var(--radius-full);
+}
+
+.sidebar-toggle:hover {
+  background-color: var(--bg-color);
+}
+
+.sidebar-collapsed .sidebar-toggle {
+  margin-left: 0;
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.nav-section {
+  margin-bottom: 1.5rem;
+}
+
+.nav-section-title {
+  padding: 0 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-collapsed .nav-section-title {
+  display: none;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.sidebar-collapsed .nav-item {
+  padding: 0.75rem;
+  justify-content: center;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-color);
+  text-decoration: none;
+}
+
+.nav-item.active {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--primary-color);
+}
+
+.nav-icon {
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-collapsed .nav-icon {
+  margin-right: 0;
+}
+
+.nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-collapsed .nav-text {
+  display: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--danger-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--bg-color);
+}
+
+.btn-icon {
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+}
+
+.btn-close:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: white;
+  color: var(--text-color);
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Modals */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.task-detail-modal {
+  max-width: 600px;
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* Alerts */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid var(--danger-color);
+  color: var(--danger-color);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left: 4px solid var(--success-color);
+  color: var(--success-color);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+/* Loaders */
+.loader {
+  border: 3px solid rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid var(--primary-color);
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.linear-spinner {
+  border: 3px solid rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid var(--primary-color);
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.dark .linear-spinner {
+  border-color: rgba(99, 102, 241, 0.08);
+  border-top-color: var(--primary-color);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Icons */
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-lg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Avatars */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-text-sm {
+  font-size: 0.875rem;
+}
+
+.avatar-xs {
+  width: 24px;
+  height: 24px;
+}
+
+.avatar-text-xs {
+  font-size: 0.75rem;
+}
+
+.avatar-lg {
+  width: 48px;
+  height: 48px;
+}
+
+.avatar-text-lg {
+  font-size: 1.25rem;
+}
+
+/* Project List */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-description {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.project-members {
+  display: flex;
+  align-items: center;
+}
+
+.member-avatars {
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.member-avatar {
+  margin-left: -8px;
+  border: 2px solid white;
+}
+
+.member-avatar:first-child {
+  margin-left: 0;
+}
+
+.member-count {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.project-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.stat-icon {
+  margin-right: 0.25rem;
+}
+
+/* Task Board */
+.task-view-container {
+  margin-top: 1rem;
+}
+
+.view-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.view-selector {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.view-option {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-option.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  height: calc(100vh - 200px);
+}
+
+.board-column {
+  background-color: var(--bg-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.column-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.task-count {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: var(--text-light);
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.column-tasks {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.task-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.task-card.completed {
+  opacity: 0.7;
+  border-left-color: var(--success-color);
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.task-title {
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+}
+
+.task-description {
+  font-size: 0.875rem;
+    color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.task-due-date {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+}
+
+.task-due-date .overdue {
+  color: var(--danger-color);
+}
+
+.task-assignee {
+  display: flex;
+  align-items: center;
+}
+
+.priority-badge {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.priority-badge.high {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+.priority-badge.medium {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+.priority-badge.low {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.status-badge.to-do {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: var(--text-light);
+}
+
+.status-badge.in-progress {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--primary-color);
+}
+
+.status-badge.done {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.empty-column {
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.875rem;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius);
+  margin-top: 0.5rem;
+}
+
+/* Task List */
+.task-list {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.task-list-header {
+  display: grid;
+  grid-template-columns: 1fr 150px 150px 100px 100px 80px;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.task-list-item {
+  display: grid;
+  grid-template-columns: 1fr 150px 150px 100px 100px 80px;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.task-list-item:last-child {
+  border-bottom: none;
+}
+
+.task-list-item:hover {
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+.task-list-title {
+  font-weight: 500;
+}
+
+.task-list-assignee {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-list-due-date {
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+.task-list-due-date.overdue {
+  color: var(--danger-color);
+}
+
+.task-list-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* Task Calendar */
+.calendar-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.weekday {
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(100px, 1fr);
+}
+
+.calendar-cell {
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem;
+  position: relative;
+}
+
+.calendar-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.calendar-cell.empty-cell {
+  background-color: rgba(100, 116, 139, 0.05);
+}
+
+.calendar-cell.today {
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+.day-number {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.today .day-number {
+  background-color: var(--primary-color);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.calendar-task {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-task.to-do {
+  background-color: rgba(100, 116, 139, 0.1);
+}
+
+.calendar-task.in-progress {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.calendar-task.done {
+  background-color: rgba(16, 185, 129, 0.1);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-priority-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  margin-right: 0.5rem;
+}
+
+.task-priority-indicator.high {
+  background-color: var(--danger-color);
+}
+
+.task-priority-indicator.medium {
+  background-color: var(--warning-color);
+}
+
+.task-priority-indicator.low {
+  background-color: var(--success-color);
+}
+
+.more-tasks {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+/* Task Details */
+.task-details {
+  padding: 1.5rem;
+}
+
+.task-header {
+  margin-bottom: 1.5rem;
+}
+
+.task-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.task-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.task-meta {
+  background-color: var(--bg-color);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.meta-row {
+  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.meta-row:last-child {
+  margin-bottom: 0;
+}
+
+.meta-label {
+  width: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.meta-value {
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.assignee-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Not Found Page */
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.not-found-title {
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.not-found-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.not-found-message {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+/* Utility Classes */
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.txt-gray {
+  color: var(--text-light);
+}
+
+.txt-danger {
+  color: var(--danger-color);
+}
+
+.txt-success {
+  color: var(--success-color);
+}
+
+.txt-primary {
+  color: var(--primary-color);
+}
+
+.overdue {
+  color: var(--danger-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .task-board {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .task-list-header, .task-list-item {
+    grid-template-columns: 1fr 120px 100px 80px;
+  }
+  
+  .task-list-header > div:nth-child(2),
+  .task-list-item > div:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .header {
+    left: 0;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+  
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .task-list-header, .task-list-item {
+    grid-template-columns: 1fr 80px;
+  }
+  
+  .task-list-header > div:nth-child(3),
+  .task-list-header > div:nth-child(4),
+  .task-list-item > div:nth-child(3),
+  .task-list-item > div:nth-child(4) {
+    display: none;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Base styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--gray-800);
+  line-height: 1.5;
+  background-color: var(--gray-50);
+}
+
+/* Layout */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-between: space-between;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.ml-16 {
+  margin-left: 4rem;
+}
+
+.ml-64 {
+  margin-left: 16rem;
+}
+
+.mt-16 {
+  margin-top: 4rem;
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s;
+}
+
+.duration-300 {
+  transition-duration: 0.3s;
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+}
+
+.btn-secondary:hover {
+  background-color: var(--gray-50);
+}
+
+/* Form elements */
+.input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--gray-700);
+  background-color: white;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Text styles */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-gray-800 {
+  color: var(--gray-800);
+}
+
+.bg-gray-50 {
+  background-color: var(--gray-50);
+}
+
+/* Sidebar */
+.sidebar-collapsed .sidebar {
+  width: 4rem;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+/* ULTRA-AGGRESSIVE Dark Mode Overrides - Maximum Specificity */
+.dark * {
+  background-color: var(--bg-color) !important;
+}
+
+.dark *, 
+.dark *::before, 
+.dark *::after {
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Force card backgrounds with higher priority */
+.dark div,
+.dark section,
+.dark article,
+.dark aside,
+.dark main,
+.dark header,
+.dark footer,
+.dark nav,
+.dark span,
+.dark p {
+  background-color: var(--bg-color) !important;
+}
+
+/* Force specific card components */
+.dark [class*="card"],
+.dark [class*="Card"],
+.dark [class*="modal"],
+.dark [class*="Modal"],
+.dark [class*="dialog"],
+.dark [class*="Dialog"],
+.dark [class*="popup"],
+.dark [class*="Popup"],
+.dark [class*="dropdown"],
+.dark [class*="Dropdown"],
+.dark [class*="panel"],
+.dark [class*="Panel"],
+.dark [class*="container"],
+.dark [class*="Container"],
+.dark [class*="wrapper"],
+.dark [class*="Wrapper"],
+.dark [class*="item"],
+.dark [class*="Item"],
+.dark [class*="list"],
+.dark [class*="List"] {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* Force any inline styles with !important */
+.dark [style*="background"],
+.dark [style*="background-color"],
+.dark [style*="background:"],
+.dark [style*="background-color:"] {
+  background-color: var(--card-bg) !important;
+  background-image: none !important;
+  color: var(--text-color) !important;
+}
+
+/* Special case for inputs */
+.dark input,
+.dark select,
+.dark textarea,
+.dark [role="textbox"],
+.dark [contenteditable="true"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Preserve button colors */
+.dark .btn-primary,
+.dark button[class*="primary"] {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.dark .btn-danger,
+.dark button[class*="danger"] {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+}
+
+.dark .btn-success,
+.dark button[class*="success"] {
+  background-color: var(--success-color) !important;
+  color: white !important;
+}
+
+/* Fix for nested elements to allow opacity variations */
+.dark *:not(button):not(a):not(input):not(select):not(textarea) * {
+  background-color: transparent !important;
+}
+
+/* Fix list items and cards specifically */
+.dark .task-list-item,
+.dark .linear-list-item,
+.dark .project-card,
+.dark .task-card,
+.dark .team-card,
+.dark .dashboard-card,
+.dark .card-body,
+.dark .card-header,
+.dark .card-footer,
+.dark .modal-body,
+.dark .modal-header,
+.dark .modal-footer {
+  background-color: var(--card-bg) !important;
+}
+
+/* Fix hover states for interactive elements */
+.dark .nav-item:hover,
+.dark .sidebar-nav a:hover,
+.dark .linear-list-item:hover,
+.dark .task-list-item:hover,
+.dark .project-card:hover,
+.dark .task-card:hover,
+.dark .dropdown-item:hover,
+.dark .linear-dropdown-item:hover {
+  background-color: #2a3548 !important;
+}
+
+/* Fix any SVG elements */
+.dark svg,
+.dark svg * {
+  fill: currentColor !important;
+  color: currentColor !important;
+  background-color: transparent !important;
+}
+
+/* Reset for icon elements */
+.dark .icon,
+.dark [class*="icon"],
+.dark [class*="Icon"],
+.dark .avatar,
+.dark [class*="avatar"],
+.dark [class*="Avatar"] {
+  background-color: transparent !important;
+}
+
+/* Fix badge elements */
+.dark .badge,
+.dark [class*="badge"],
+.dark [class*="Badge"] {
+  color: inherit !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Preserve status colors */
+.dark .status-badge {
+  background-color: transparent !important;
+}
+
+.dark .status-badge.to-do,
+.dark .status-badge.backlog {
+  color: #94a3b8 !important;
+}
+
+.dark .status-badge.in-progress {
+  color: #818cf8 !important;
+}
+
+.dark .status-badge.done,
+.dark .status-badge.completed {
+  color: #34d399 !important;
+}
+
+/* Preserve priority colors */
+.dark .priority-badge {
+  background-color: transparent !important;
+}
+
+.dark .priority-badge.high {
+  color: #f87171 !important;
+}
+
+.dark .priority-badge.medium {
+  color: #fbbf24 !important;
+}
+
+.dark .priority-badge.low {
+  color: #34d399 !important;
+}
+
+/* Additional form element fixes for dark mode */
+.dark input,
+.dark select,
+.dark textarea,
+.dark .form-control,
+.dark [type="text"],
+.dark [type="email"],
+.dark [type="password"],
+.dark [type="number"],
+.dark [type="date"],
+.dark [type="datetime-local"],
+.dark [type="month"],
+.dark [type="search"],
+.dark [type="tel"],
+.dark [type="time"],
+.dark [type="week"],
+.dark [type="url"],
+.dark [contenteditable="true"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Form labels in dark mode */
+.dark label,
+.dark .form-label,
+.dark [for] {
+  color: #e2e8f0 !important;
+}
+
+/* Dark mode placeholders */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* Dark mode focus states */
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 1px var(--primary-color) !important;
+  outline: none !important;
+}
+
+/* Fix checkbox and radio buttons */
+.dark input[type="checkbox"],
+.dark input[type="radio"] {
+  background-color: #475569 !important;
+  border-color: #64748b !important;
+}
+
+.dark input[type="checkbox"]:checked,
+.dark input[type="radio"]:checked {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Ultra-specific fixes for stubborn third-party components */
+.dark [id*="menu"],
+.dark [id*="dropdown"],
+.dark [id*="dialog"],
+.dark [id*="modal"],
+.dark [id*="popover"],
+.dark [id*="tooltip"],
+.dark [id*="drawer"],
+.dark [id*="sheet"],
+.dark [id*="sidebar"] {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Force background color on elements with inline styles */
+.dark [style*="background"],
+.dark [style*="background-color"],
+.dark [style*="background:"],
+.dark [style*="background-color:"] {
+  background-color: var(--card-bg) !important;
+  background: var(--card-bg) !important;
+}
+
+/* Special treatment for any elements with light/white classnames */
+.dark [class*="light"],
+.dark [class*="Light"],
+.dark [class*="white"],
+.dark [class*="White"] {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* !!! CRITICAL FIX !!! - Emergency override for white team member cards in screenshot */
+.dark div[style*="background-color:white"],
+.dark div[style*="background-color: white"],
+.dark div[style*="background:white"],
+.dark div[style*="background: white"],
+.dark div[style*="background-color:#fff"],
+.dark div[style*="background-color: #fff"],
+.dark div[style*="background:#fff"],
+.dark div[style*="background: #fff"],
+.dark div[style*="background-color:#ffffff"],
+.dark div[style*="background-color: #ffffff"],
+.dark div[style*="background:#ffffff"],
+.dark div[style*="background: #ffffff"] {
+  background-color: var(--card-bg) !important;
+  background: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* Ultra specific fix for Team Page */
+.dark .team-member,
+.dark .team-members-container > div,
+.dark .team-members-container > div > div,
+.dark div[class*="team"] > div,
+.dark div[id*="team"] > div,
+.dark div[class*="Team"] > div,
+.dark div[id*="Team"] > div {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Specific fix for the "Recent Activity" and "Team" section headers */
+.dark h2, .dark h3, .dark h4,
+.dark div > h2, .dark div > h3, .dark div > h4,
+.dark .linear-card h2, .dark .linear-card h3, .dark .linear-card h4,
+.dark .section-header, .dark .card-header, .dark .widget-header,
+.dark [class*="header"] h2, .dark [class*="header"] h3, 
+.dark [class*="Header"] h2, .dark [class*="Header"] h3 {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  padding: 0.5rem !important;  /* Add some padding to ensure full coverage */
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Critical fix for user profile cards in dashboard */
+.dark .user-profile,
+.dark .profile-card,
+.dark .profile-container,
+.dark .profile-item,
+.dark div:has(img[alt*="profile"]),
+.dark div:has(.user-avatar),
+.dark div:has(.avatar),
+.dark div:has(.profile-pic),
+.dark div:has(.user-pic) {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Fix for deeply nested elements in dashboard and chat */
+.dark div.dashboard-container div.linear-card,
+.dark div.dashboard-grid div.linear-card, 
+.dark div.chat-container div.linear-card,
+.dark div.chat-section div.linear-card {
+  background-color: var(--card-bg) !important;
+}
+
+/* Fix for nested cards with white background */
+.dark div.linear-card,
+.dark div.linear-card div.linear-card,
+.dark div.card,
+.dark div.card div.card {
+  background-color: var(--card-bg) !important;
+}
+
+/* Force ALL linear-cards to have dark background */
+html.dark body .linear-card,
+html.dark body div.linear-card,
+html.dark body .linear-card *,
+html.dark body div.linear-card *,
+html[class*="dark"] body .linear-card,
+html[class*="dark"] body div.linear-card,
+body.dark .linear-card,
+body.dark div.linear-card,
+body.dark .linear-card *,
+body.dark div.linear-card *,
+.dark .linear-card,
+.dark div.linear-card,
+.dark .linear-card > div,
+.dark div.linear-card > div,
+.dark #root .linear-card,
+.dark #root div.linear-card {
+  background-color: var(--card-bg) !important;
+}
+
+/* Absolute last attempt to force everything */
+.dark *:not(svg):not(path) {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Fix for SVG and non-background elements */
+.dark svg,
+.dark path,
+.dark g,
+.dark circle,
+.dark rect,
+.dark line,
+.dark polyline,
+.dark polygon,
+.dark ellipse,
+.dark text,
+.dark tspan,
+.dark image {
+  background-color: transparent !important;
+}
+
+.dark button,
+.dark .btn,
+.dark [role="button"],
+.dark a,
+.dark .link,
+.dark input,
+.dark select,
+.dark textarea,
+.dark [contenteditable="true"] {
+  background-color: transparent !important;
+}
+
+/* Reset specific important UI elements */
+.dark .btn-primary,
+.dark button[class*="primary"],
+.dark [type="submit"] {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.dark .btn-danger,
+.dark button[class*="danger"] {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+}
+
+.dark .btn-success,
+.dark button[class*="success"] {
+  background-color: var(--success-color) !important;
+  color: white !important;
+}
+
+/* Reset main container background */
+.dark body,
+.dark #root,
+.dark .app,
+.dark main,
+.dark .main-content,
+.dark .container {
+  background-color: var(--bg-color) !important;
+}
+
+/* Super-specific dashboard fixes */
+.dark .dashboard-container, 
+.dark .dashboard-container > div,
+.dark .dashboard-container .linear-card,
+.dark .dashboard-container .card,
+.dark .dashboard-grid,
+.dark .dashboard-grid > div,
+.dark .dashboard-grid .linear-card,
+.dark .dashboard-grid .card,
+.dark .dashboard-widget-container,
+.dark .dashboard-widget-container > div,
+.dark .stats-widget,
+.dark .stats-widget > div,
+.dark .dashboard-card,
+.dark .dashboard-card > div,
+.dark div[class*="dashboard"] div,
+.dark div[id*="dashboard"] div,
+.dark div[class*="Dashboard"] div,
+.dark div[id*="Dashboard"] div {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Dashboard section headers and content */
+.dark div[class*="header"],
+.dark div[class*="Header"],
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark .dashboard h1, .dark .dashboard h2, .dark .dashboard h3,
+.dark .dashboard .section-title,
+.dark .dashboard .widget-title,
+.dark .dashboard .card-title,
+.dark .dashboard-section-header,
+.dark .recent-activity-header,
+.dark .recent-activity,
+.dark div:has(> h2),
+.dark div:has(> h3),
+.dark div:has(> .title),
+.dark .activity-header,
+.dark .team-header {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* Ultra-specific team member card fixes */
+.dark .team-member,
+.dark .team-member-card,
+.dark .team-list,
+.dark .team-grid,
+.dark .team-container,
+.dark .team-section,
+.dark .team-member-list,
+.dark .member-profile,
+.dark .member-item,
+.dark div[class*="team"] div,
+.dark div[class*="Team"] div,
+.dark div[class*="member"] div,
+.dark div[class*="Member"] div,
+.dark div[class*="user-profile"],
+.dark div[class*="profile-card"],
+.dark div[class*="profile-item"],
+.dark div[class*="team-card"] {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Direct match for team members based on the screenshot */
+.dark div[class*="team"] > div > div,
+.dark div[class*="Team"] > div > div,
+.dark div[class*="team"] .linear-card,
+.dark div[class*="Team"] .linear-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* ULTRA SPECIFIC CRITICAL FIXES FOR SCREENSHOT */
+/* Target specifically the Recent Activity and Team section headers */
+.dark div > h2,
+.dark div h2,
+.dark h2,
+.dark .recent-activity h2,
+.dark .team-section h2,
+.dark .dashboard-section h2 {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Team member cards with border fix */
+.dark .team-member,
+.dark .team-member-card, 
+.dark .member-profile, 
+.dark div[class*="team"] > div,
+.dark div[class*="Team"] > div,
+.dark div[class*="member"] > div,
+.dark div[class*="Member"] > div {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #475569 !important;
+}
+
+/* ADDITIONAL EMERGENCY FIXES FOR WHITE SECTIONS */
+/* Project Chats section */
+.dark div[class*="project-chats"],
+.dark div[class*="Project-Chats"],
+.dark div:has(h2:contains("Project Chats")),
+.dark div:has(div:contains("Communicate with your team")),
+.dark .project-chat-section,
+.dark .project-chat-header,
+.dark .project-chat-container {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Text elements and headers for all sections */
+.dark h1, .dark h2, .dark h3, .dark h4,
+.dark div > p, .dark p, .dark span, .dark div > span,
+.dark .section-description, .dark .section-header + p,
+.dark div:has(h2) > p, .dark div:has(h3) > p {
+  background-color: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+/* Your Projects section */
+.dark div[class*="your-projects"],
+.dark div[class*="Your-Projects"],
+.dark div:has(h2:contains("Your Projects")),
+.dark .projects-section,
+.dark .projects-container,
+.dark .projects-header,
+.dark .projects-grid {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* My Tasks section */
+.dark div[class*="my-tasks"],
+.dark div[class*="My-Tasks"],
+.dark div:has(h2:contains("My Tasks")),
+.dark .tasks-section,
+.dark .tasks-container,
+.dark .tasks-header,
+.dark .task-grid {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Active Projects section */
+.dark div[class*="active-projects"],
+.dark div[class*="Active-Projects"],
+.dark div:has(h2:contains("Active Projects")),
+.dark .active-projects-section,
+.dark .active-projects-container,
+.dark .active-projects-header,
+.dark .active-projects-grid {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Brute force approach for any white div */
+.dark div[style*="background: white"],
+.dark div[style*="background: #fff"],
+.dark div[style*="background: #ffffff"],
+.dark div[style*="background-color: white"],
+.dark div[style*="background-color: #fff"],
+.dark div[style*="background-color: #ffffff"],
+.dark div[style*="background:white"],
+.dark div[style*="background:#fff"],
+.dark div[style*="background:#ffffff"],
+.dark div[style*="background-color:white"],
+.dark div[style*="background-color:#fff"],
+.dark div[style*="background-color:#ffffff"] {
+  background: #1e293b !important;
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Super specific team member card fix */
+.dark .team-member-container,
+.dark .team-grid > div,
+.dark .team-list > div,
+.dark div[class*="team"] > div > div,
+.dark div[class*="Team"] > div > div {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Extreme fix for every div in the page */
+.dark div {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* But restore special elements that shouldn't have backgrounds */
+.dark svg, .dark svg *, 
+.dark button, .dark button *, 
+.dark a, .dark a *, 
+.dark .avatar *, 
+.dark .icon *, 
+.dark .badge * {
+  background-color: transparent !important;
+}
+
+/* THEME MATCHING COLOR FIXES */
+/* Buttons in dark mode */
+.dark .btn,
+.dark button:not(.btn-primary):not(.btn-danger):not(.btn-success),
+.dark [class*="button"],
+.dark [class*="Button"] {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+.dark .btn:hover,
+.dark button:not(.btn-primary):not(.btn-danger):not(.btn-success):hover,
+.dark [class*="button"]:hover,
+.dark [class*="Button"]:hover {
+  background-color: #475569 !important;
+}
+
+/* Theme-colored buttons */
+.dark .btn-primary,
+.dark [class*="primary"] {
+  background-color: #818cf8 !important;
+  color: #f8fafc !important;
+  border-color: #818cf8 !important;
+}
+
+.dark .btn-primary:hover,
+.dark [class*="primary"]:hover {
+  background-color: #6366f1 !important;
+  border-color: #6366f1 !important;
+}
+
+/* Navbar elements */
+.dark .navbar,
+.dark .header,
+.dark nav,
+.dark [class*="navbar"],
+.dark [class*="Navbar"],
+.dark [class*="nav-"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .navbar-item,
+.dark .nav-item,
+.dark .header-item,
+.dark [class*="nav-item"],
+.dark [class*="navbar-item"] {
+  color: #e2e8f0 !important;
+}
+
+.dark .navbar-item:hover,
+.dark .nav-item:hover,
+.dark .header-item:hover,
+.dark [class*="nav-item"]:hover,
+.dark [class*="navbar-item"]:hover {
+  background-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* Status badges - Medium, In Progress, etc. */
+.dark .status-badge,
+.dark .priority-badge,
+.dark [class*="badge"],
+.dark [class*="status"] {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Medium badge */
+.dark .priority-badge.medium,
+.dark [class*="badge"][class*="medium"],
+.dark [class*="Medium"],
+.dark .medium,
+.dark .status-medium {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fbbf24 !important;
+}
+
+/* In Progress badge */
+.dark .status-badge.in-progress,
+.dark [class*="badge"][class*="progress"],
+.dark [class*="Progress"],
+.dark .in-progress,
+.dark .status-in-progress {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #818cf8 !important;
+}
+
+/* High priority badge */
+.dark .priority-badge.high,
+.dark [class*="badge"][class*="high"],
+.dark [class*="High"],
+.dark .high,
+.dark .status-high {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  color: #f87171 !important;
+}
+
+/* Low priority badge */
+.dark .priority-badge.low,
+.dark [class*="badge"][class*="low"],
+.dark [class*="Low"],
+.dark .low,
+.dark .status-low {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+}
+
+/* Done/Completed badge */
+.dark .status-badge.done,
+.dark .status-badge.completed,
+.dark [class*="badge"][class*="done"],
+.dark [class*="badge"][class*="completed"],
+.dark [class*="Done"],
+.dark [class*="Completed"],
+.dark .done,
+.dark .completed,
+.dark .status-done,
+.dark .status-completed {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+}
+
+/* USER EDIT FORM FIXES */
+/* Form containers and sections */
+.dark .user-form,
+.dark .edit-user-form,
+.dark [class*="user-edit"],
+.dark [class*="user-profile"],
+.dark [class*="user-settings"],
+.dark form[class*="user"],
+.dark form[class*="profile"],
+.dark div[class*="edit-form"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Form sections */
+.dark .form-section,
+.dark .form-group,
+.dark .form-row,
+.dark fieldset,
+.dark .role-section,
+.dark .status-section,
+.dark [class*="form-section"],
+.dark [class*="form-group"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Role and status selection items */
+.dark .role-option,
+.dark .role-item,
+.dark .status-option,
+.dark .status-item,
+.dark [class*="role-item"],
+.dark [class*="status-item"],
+.dark [role="option"],
+.dark label[for*="role"],
+.dark label[for*="status"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* Role and status descriptions */
+.dark .role-description,
+.dark .status-description,
+.dark .option-description,
+.dark [class*="description"],
+.dark label + p,
+.dark label small,
+.dark .form-text {
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+}
+
+/* Radio buttons and checkboxes */
+.dark input[type="radio"],
+.dark input[type="checkbox"] {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+}
+
+.dark input[type="radio"]:checked,
+.dark input[type="checkbox"]:checked {
+  background-color: #818cf8 !important;
+  border-color: #818cf8 !important;
+}
+
+/* Labels */
+.dark label {
+  background-color: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+/* Make sure all status indicators are visible */
+.dark .medium,
+.dark .in-progress,
+.dark [class*="medium"],
+.dark [class*="Medium"],
+.dark [class*="progress"],
+.dark [class*="Progress"],
+.dark *:contains("Medium"),
+.dark *:contains("In Progress") {
+  background-color: transparent !important;
+}
+
+.dark .medium,
+.dark [class*="medium"],
+.dark [class*="Medium"] {
+  color: #fbbf24 !important;
+  font-weight: 500 !important;
+}
+
+.dark .in-progress,
+.dark [class*="progress"],
+.dark [class*="Progress"] {
+  color: #818cf8 !important;
+  font-weight: 500 !important;
+}
+
+/* Ensure status badges have proper background and padding */
+.dark .status-badge,
+.dark .priority-badge,
+.dark [class*="badge"] {
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  display: inline-block !important;
+  font-weight: 500 !important;
+}
+
+.dark .status-badge.medium,
+.dark .priority-badge.medium,
+.dark [class*="badge"][class*="medium"] {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fbbf24 !important;
+}
+
+.dark .status-badge.in-progress,
+.dark [class*="badge"][class*="progress"] {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #818cf8 !important;
+}
+
+/* Ensure all form inputs have proper styling */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+  padding: 0.5rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* NAVBAR SPECIFIC FIXES */
+/* My Tasks navbar section */
+.dark .nav-item[href*="tasks"],
+.dark .nav-item[href*="my-tasks"],
+.dark a[href*="tasks"],
+.dark a[href*="my-tasks"],
+.dark .sidebar .nav-item:has(span:contains("Tasks")),
+.dark .sidebar .nav-item:has(span:contains("My Tasks")),
+.dark .sidebar-nav a:has(span:contains("Tasks")),
+.dark .sidebar-nav .nav-item:has(.nav-icon + .nav-text:contains("Tasks")) {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-left: 3px solid #818cf8 !important;
+  padding-left: calc(1.5rem - 3px) !important;
+}
+
+.dark .nav-item[href*="tasks"]:hover,
+.dark .nav-item[href*="my-tasks"]:hover,
+.dark a[href*="tasks"]:hover,
+.dark a[href*="my-tasks"]:hover,
+.dark .sidebar .nav-item:has(span:contains("Tasks")):hover,
+.dark .sidebar-nav a:has(span:contains("Tasks")):hover {
+  background-color: #334155 !important;
+}
+
+.dark .nav-item[href*="tasks"].active,
+.dark .nav-item[href*="my-tasks"].active,
+.dark a[href*="tasks"].active,
+.dark a[href*="my-tasks"].active,
+.dark .sidebar .nav-item:has(span:contains("Tasks")).active,
+.dark .sidebar-nav a:has(span:contains("Tasks")).active,
+.dark .nav-item.active:has(.nav-text:contains("Tasks")) {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #818cf8 !important;
+  border-left-color: #818cf8 !important;
+}
+
+/* Settings navbar section */
+.dark .nav-item[href*="settings"],
+.dark a[href*="settings"],
+.dark .sidebar .nav-item:has(span:contains("Settings")),
+.dark .sidebar-nav a:has(span:contains("Settings")),
+.dark .sidebar-nav .nav-item:has(.nav-icon + .nav-text:contains("Settings")) {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-left: 3px solid transparent !important;
+  padding-left: calc(1.5rem - 3px) !important;
+}
+
+.dark .nav-item[href*="settings"]:hover,
+.dark a[href*="settings"]:hover,
+.dark .sidebar .nav-item:has(span:contains("Settings")):hover,
+.dark .sidebar-nav a:has(span:contains("Settings")):hover {
+  background-color: #334155 !important;
+}
+
+.dark .nav-item[href*="settings"].active,
+.dark a[href*="settings"].active,
+.dark .sidebar .nav-item:has(span:contains("Settings")).active,
+.dark .sidebar-nav a:has(span:contains("Settings")).active,
+.dark .nav-item.active:has(.nav-text:contains("Settings")) {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #818cf8 !important;
+  border-left-color: #818cf8 !important;
+}
+
+/* LIGHT MODE STYLES WITH YELLOW ACCENTS */
+/* Base styles for light mode with yellow accents */
+:root {
+  --light-primary-color: #f59e0b;
+  --light-primary-hover: #d97706;
+  --light-secondary-color: #64748b;
+  --light-secondary-hover: #475569;
+  --light-danger-color: #ef4444;
+  --light-danger-hover: #dc2626;
+  --light-success-color: #10b981;
+  --light-text-color: #1e293b;
+  --light-text-light: #64748b;
+  --light-bg-color: #f8fafc;
+  --light-card-bg: #ffffff;
+  --light-border-color: #e2e8f0;
+}
+
+/* Light mode buttons and controls */
+.btn-primary {
+  background-color: var(--light-primary-color);
+  border-color: var(--light-primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--light-primary-hover);
+  border-color: var(--light-primary-hover);
+}
+
+/* Light mode status badges */
+.status-badge.medium,
+.priority-badge.medium,
+[class*="badge"][class*="medium"] {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+.status-badge.in-progress,
+[class*="badge"][class*="progress"] {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #d97706;
+}
+
+/* Light mode navbar styling */
+.nav-item.active,
+.sidebar .nav-item.active,
+.sidebar-nav a.active {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--light-primary-color);
+  border-left-color: var(--light-primary-color);
+}
+
+.nav-item[href*="tasks"],
+.nav-item[href*="my-tasks"],
+a[href*="tasks"],
+a[href*="my-tasks"],
+.sidebar .nav-item:has(span:contains("Tasks")),
+.sidebar-nav a:has(span:contains("Tasks")) {
+  border-left: 3px solid transparent;
+  padding-left: calc(1.5rem - 3px);
+}
+
+.nav-item[href*="tasks"].active,
+.nav-item[href*="my-tasks"].active,
+a[href*="tasks"].active,
+a[href*="my-tasks"].active,
+.sidebar .nav-item:has(span:contains("Tasks")).active,
+.sidebar-nav a:has(span:contains("Tasks")).active,
+.nav-item.active:has(.nav-text:contains("Tasks")) {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--light-primary-color);
+  border-left-color: var(--light-primary-color);
+}
+
+.nav-item[href*="settings"].active,
+a[href*="settings"].active,
+.sidebar .nav-item:has(span:contains("Settings")).active,
+.sidebar-nav a:has(span:contains("Settings")).active,
+.nav-item.active:has(.nav-text:contains("Settings")) {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--light-primary-color);
+  border-left-color: var(--light-primary-color);
+}
+
+/* Light mode accent colors */
+.text-primary,
+.txt-primary,
+a {
+  color: var(--light-primary-color);
+}
+
+a:hover {
+  color: var(--light-primary-hover);
+}
+
+/* Fix for collapsed sidebar in both modes */
+.sidebar-collapsed .nav-item[href*="tasks"],
+.sidebar-collapsed .nav-item[href*="my-tasks"],
+.sidebar-collapsed a[href*="tasks"],
+.sidebar-collapsed a[href*="my-tasks"],
+.sidebar-collapsed .sidebar .nav-item:has(span:contains("Tasks")),
+.sidebar-collapsed .sidebar-nav a:has(span:contains("Tasks")),
+.sidebar-collapsed .nav-item[href*="settings"],
+.sidebar-collapsed a[href*="settings"],
+.sidebar-collapsed .sidebar .nav-item:has(span:contains("Settings")),
+.sidebar-collapsed .sidebar-nav a:has(span:contains("Settings")) {
+  padding-left: 0 !important;
+  justify-content: center !important;
+  border-left: none !important;
+  border-left-width: 0 !important;
+}
+
+.sidebar-collapsed .nav-item.active,
+.dark .sidebar-collapsed .nav-item.active {
+  border-left: none !important;
+  border-left-width: 0 !important;
+}
+
+/* PREMIUM STYLING FOR SETTINGS SECTIONS */
+/* Common styles for settings pages */
+.settings-page,
+.settings-container,
+.settings-content,
+.settings-section,
+[class*="settings-page"],
+[class*="settings-container"],
+[class*="settings-content"] {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.dark .settings-page,
+.dark .settings-container,
+.dark .settings-content,
+.dark .settings-section,
+.dark [class*="settings-page"],
+.dark [class*="settings-container"],
+.dark [class*="settings-content"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+/* Settings navigation tabs */
+.settings-tabs,
+.settings-nav,
+.settings-menu,
+[class*="settings-tabs"],
+[class*="settings-nav"],
+[class*="settings-menu"] {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.dark .settings-tabs,
+.dark .settings-nav,
+.dark .settings-menu,
+.dark [class*="settings-tabs"],
+.dark [class*="settings-nav"],
+.dark [class*="settings-menu"] {
+  border-color: #334155 !important;
+}
+
+.settings-tab,
+.settings-tab-item,
+[class*="settings-tab"] {
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+}
+
+.dark .settings-tab,
+.dark .settings-tab-item,
+.dark [class*="settings-tab"] {
+  color: #94a3b8 !important;
+}
+
+.settings-tab:hover,
+.settings-tab-item:hover,
+[class*="settings-tab"]:hover {
+  background-color: rgba(245, 158, 11, 0.05);
+  color: var(--light-primary-color);
+}
+
+.dark .settings-tab:hover,
+.dark .settings-tab-item:hover,
+.dark [class*="settings-tab"]:hover {
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  color: #818cf8 !important;
+}
+
+.settings-tab.active,
+.settings-tab-item.active,
+[class*="settings-tab"].active {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--light-primary-color);
+  font-weight: 600;
+}
+
+.dark .settings-tab.active,
+.dark .settings-tab-item.active,
+.dark [class*="settings-tab"].active {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #818cf8 !important;
+}
+
+/* Settings section headings */
+.settings-heading,
+.settings-title,
+.section-heading,
+[class*="settings-heading"],
+[class*="settings-title"],
+[class*="section-heading"] {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.settings-heading::before,
+.settings-title::before,
+.section-heading::before,
+[class*="settings-heading"]::before,
+[class*="settings-title"]::before,
+[class*="section-heading"]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  height: 1.5rem;
+  width: 5px;
+  background-color: var(--light-primary-color);
+  border-radius: 9999px;
+}
+
+.dark .settings-heading::before,
+.dark .settings-title::before,
+.dark .section-heading::before,
+.dark [class*="settings-heading"]::before,
+.dark [class*="settings-title"]::before,
+.dark [class*="section-heading"]::before {
+  background-color: #818cf8 !important;
+}
+
+/* PROFILE SECTION STYLING */
+.profile-section,
+.profile-settings,
+[class*="profile-section"],
+[class*="profile-settings"] {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.profile-avatar-section,
+.avatar-upload,
+[class*="profile-avatar"],
+[class*="avatar-upload"] {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar,
+.user-avatar,
+.avatar-preview,
+[class*="profile-avatar"],
+[class*="user-avatar"],
+[class*="avatar-preview"] {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.dark .profile-avatar,
+.dark .user-avatar,
+.dark .avatar-preview,
+.dark [class*="profile-avatar"],
+.dark [class*="user-avatar"],
+.dark [class*="avatar-preview"] {
+  border-color: #334155 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.profile-avatar:hover,
+.user-avatar:hover,
+.avatar-preview:hover,
+[class*="profile-avatar"]:hover,
+[class*="user-avatar"]:hover,
+[class*="avatar-preview"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.dark .profile-avatar:hover,
+.dark .user-avatar:hover,
+.dark .avatar-preview:hover,
+.dark [class*="profile-avatar"]:hover,
+.dark [class*="user-avatar"]:hover,
+.dark [class*="avatar-preview"]:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.avatar-upload-btn,
+.upload-avatar-btn,
+[class*="avatar-upload-btn"],
+[class*="upload-avatar"] {
+  background-color: var(--light-primary-color) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.dark .avatar-upload-btn,
+.dark .upload-avatar-btn,
+.dark [class*="avatar-upload-btn"],
+.dark [class*="upload-avatar"] {
+  background-color: #818cf8 !important;
+}
+
+.avatar-upload-btn:hover,
+.upload-avatar-btn:hover,
+[class*="avatar-upload-btn"]:hover,
+[class*="upload-avatar"]:hover {
+  background-color: var(--light-primary-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+}
+
+.dark .avatar-upload-btn:hover,
+.dark .upload-avatar-btn:hover,
+.dark [class*="avatar-upload-btn"]:hover,
+.dark [class*="upload-avatar"]:hover {
+  background-color: #6366f1 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+.profile-form,
+[class*="profile-form"] {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.profile-form .form-group,
+[class*="profile-form"] .form-group {
+  margin-bottom: 0;
+}
+
+.profile-form label,
+[class*="profile-form"] label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.profile-form .input,
+[class*="profile-form"] .input {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.dark .profile-form .input,
+.dark [class*="profile-form"] .input {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+.profile-form .input:focus,
+[class*="profile-form"] .input:focus {
+  border-color: var(--light-primary-color);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  outline: none;
+}
+
+.dark .profile-form .input:focus,
+.dark [class*="profile-form"] .input:focus {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+}
+
+.profile-actions,
+.form-actions,
+[class*="profile-actions"],
+[class*="form-actions"] {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.save-profile-btn,
+.update-profile-btn,
+[class*="save-profile"],
+[class*="update-profile"] {
+  background-color: var(--light-primary-color) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark .save-profile-btn,
+.dark .update-profile-btn,
+.dark [class*="save-profile"],
+.dark [class*="update-profile"] {
+  background-color: #818cf8 !important;
+}
+
+.save-profile-btn:hover,
+.update-profile-btn:hover,
+[class*="save-profile"]:hover,
+[class*="update-profile"]:hover {
+  background-color: var(--light-primary-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+}
+
+.dark .save-profile-btn:hover,
+.dark .update-profile-btn:hover,
+.dark [class*="save-profile"]:hover,
+.dark [class*="update-profile"]:hover {
+  background-color: #6366f1 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* PASSWORD SECTION STYLING */
+.password-section,
+.password-settings,
+[class*="password-section"],
+[class*="password-settings"] {
+  margin-bottom: 2.5rem;
+}
+
+.password-form,
+[class*="password-form"] {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.password-input-group,
+[class*="password-input"] {
+  position: relative;
+}
+
+.password-input-group .input,
+[class*="password-input"] .input {
+  padding-right: 3rem !important;
+}
+
+.password-toggle,
+.toggle-password,
+[class*="password-toggle"],
+[class*="toggle-password"] {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--light-secondary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.dark .password-toggle,
+.dark .toggle-password,
+.dark [class*="password-toggle"],
+.dark [class*="toggle-password"] {
+  color: #94a3b8 !important;
+}
+
+.password-toggle:hover,
+.toggle-password:hover,
+[class*="password-toggle"]:hover,
+[class*="toggle-password"]:hover {
+  color: var(--light-primary-color);
+}
+
+.dark .password-toggle:hover,
+.dark .toggle-password:hover,
+.dark [class*="password-toggle"]:hover,
+.dark [class*="toggle-password"]:hover {
+  color: #818cf8 !important;
+}
+
+.password-requirements,
+.password-tips,
+[class*="password-requirements"],
+[class*="password-tips"] {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #f8fafc;
+  border-left: 4px solid var(--light-primary-color);
+}
+
+.dark .password-requirements,
+.dark .password-tips,
+.dark [class*="password-requirements"],
+.dark [class*="password-tips"] {
+  background-color: #334155 !important;
+  border-left-color: #818cf8 !important;
+}
+
+.requirement-item,
+.password-rule,
+[class*="requirement-item"],
+[class*="password-rule"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--light-secondary-color);
+}
+
+.dark .requirement-item,
+.dark .password-rule,
+.dark [class*="requirement-item"],
+.dark [class*="password-rule"] {
+  color: #94a3b8 !important;
+}
+
+.requirement-item.valid,
+.password-rule.valid,
+[class*="requirement-item"].valid,
+[class*="password-rule"].valid {
+  color: var(--light-success-color);
+}
+
+.dark .requirement-item.valid,
+.dark .password-rule.valid,
+.dark [class*="requirement-item"].valid,
+.dark [class*="password-rule"].valid {
+  color: #34d399 !important;
+}
+
+.update-password-btn,
+.change-password-btn,
+[class*="update-password"],
+[class*="change-password"] {
+  background-color: var(--light-primary-color) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark .update-password-btn,
+.dark .change-password-btn,
+.dark [class*="update-password"],
+.dark [class*="change-password"] {
+  background-color: #818cf8 !important;
+}
+
+.update-password-btn:hover,
+.change-password-btn:hover,
+[class*="update-password"]:hover,
+[class*="change-password"]:hover {
+  background-color: var(--light-primary-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+}
+
+.dark .update-password-btn:hover,
+.dark .change-password-btn:hover,
+.dark [class*="update-password"]:hover,
+.dark [class*="change-password"]:hover {
+  background-color: #6366f1 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* NOTIFICATIONS SECTION STYLING */
+.notifications-section,
+.notification-settings,
+[class*="notifications-section"],
+[class*="notification-settings"] {
+  margin-bottom: 2.5rem;
+}
+
+.notification-group,
+.notification-category,
+[class*="notification-group"],
+[class*="notification-category"] {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dark .notification-group,
+.dark .notification-category,
+.dark [class*="notification-group"],
+.dark [class*="notification-category"] {
+  border-color: #334155 !important;
+}
+
+.notification-group:last-child,
+.notification-category:last-child,
+[class*="notification-group"]:last-child,
+[class*="notification-category"]:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.notification-group-title,
+.category-title,
+[class*="notification-group-title"],
+[class*="category-title"] {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--light-text-color);
+}
+
+.dark .notification-group-title,
+.dark .category-title,
+.dark [class*="notification-group-title"],
+.dark [class*="category-title"] {
+  color: #e2e8f0 !important;
+}
+
+.notification-option,
+.notification-item,
+[class*="notification-option"],
+[class*="notification-item"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.notification-option:hover,
+.notification-item:hover,
+[class*="notification-option"]:hover,
+[class*="notification-item"]:hover {
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.dark .notification-option:hover,
+.dark .notification-item:hover,
+.dark [class*="notification-option"]:hover,
+.dark [class*="notification-item"]:hover {
+  background-color: rgba(99, 102, 241, 0.1) !important;
+}
+
+.notification-info,
+.option-info,
+[class*="notification-info"],
+[class*="option-info"] {
+  flex: 1;
+}
+
+.notification-title,
+.option-title,
+[class*="notification-title"],
+[class*="option-title"] {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.notification-description,
+.option-description,
+[class*="notification-description"],
+[class*="option-description"] {
+  font-size: 0.875rem;
+  color: var(--light-text-light);
+}
+
+.dark .notification-description,
+.dark .option-description,
+.dark [class*="notification-description"],
+.dark [class*="option-description"] {
+  color: #94a3b8 !important;
+}
+
+/* Toggle switch styling */
+.toggle-switch,
+.notification-toggle,
+[class*="toggle-switch"],
+[class*="notification-toggle"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-input,
+[class*="toggle-input"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider,
+[class*="toggle-slider"] {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.dark .toggle-slider,
+.dark [class*="toggle-slider"] {
+  background-color: #475569 !important;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 1.25rem;
+  width: 1.25rem;
+  left: 0.125rem;
+  bottom: 0.125rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-input:checked + .toggle-slider {
+  background-color: var(--light-primary-color);
+}
+
+.dark .toggle-input:checked + .toggle-slider {
+  background-color: #818cf8 !important;
+}
+
+.toggle-input:checked + .toggle-slider:before {
+  transform: translateX(1.5rem);
+}
+
+.toggle-input:focus + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.dark .toggle-input:focus + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Save notification preferences button */
+.save-notification-preferences,
+.save-notifications-btn,
+[class*="save-notification"] {
+  background-color: var(--light-primary-color) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark .save-notification-preferences,
+.dark .save-notifications-btn,
+.dark [class*="save-notification"] {
+  background-color: #818cf8 !important;
+}
+
+.save-notification-preferences:hover,
+.save-notifications-btn:hover,
+[class*="save-notification"]:hover {
+  background-color: var(--light-primary-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+}
+
+.dark .save-notification-preferences:hover,
+.dark .save-notifications-btn:hover,
+.dark [class*="save-notification"]:hover {
+  background-color: #6366f1 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Settings animations and transitions */
+.settings-tab,
+.settings-tab-item,
+[class*="settings-tab"],
+.profile-avatar,
+.user-avatar,
+[class*="avatar"],
+.input,
+button,
+.toggle-slider {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* TASK DETAILS STYLING - CRITICAL FIX */
+/* Modal backdrop and container */
+.dark .modal-backdrop,
+.dark .task-modal-backdrop,
+.dark [class*="modal-backdrop"],
+.dark [class*="task-backdrop"] {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Task Modal Content */
+.dark .task-detail-modal,
+.dark .task-modal,
+.dark .task-details,
+.dark .modal-content,
+.dark [class*="task-modal"],
+.dark [class*="task-detail"],
+.dark [class*="modal-content"],
+.dark div[class*="task-modal"],
+.dark div[class*="task-detail"],
+.dark div[class*="modal-content"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Task Modal Header */
+.dark .task-modal-header,
+.dark .task-detail-header,
+.dark .modal-header,
+.dark [class*="task-modal-header"],
+.dark [class*="task-detail-header"],
+.dark [class*="modal-header"],
+.dark div[class*="task-modal-header"],
+.dark div[class*="task-detail-header"],
+.dark div[class*="modal-header"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-bottom-color: #334155 !important;
+  padding: 1.25rem !important;
+  border-top-left-radius: 0.75rem !important;
+  border-top-right-radius: 0.75rem !important;
+}
+
+/* Task Modal Title */
+.dark .task-modal-title,
+.dark .task-detail-title,
+.dark .modal-title,
+.dark [class*="task-modal-title"],
+.dark [class*="task-detail-title"],
+.dark [class*="modal-title"],
+.dark div[class*="task-modal-title"],
+.dark div[class*="task-detail-title"],
+.dark div[class*="modal-title"],
+.dark h1[class*="task-modal"],
+.dark h2[class*="task-modal"],
+.dark h3[class*="task-modal"],
+.dark h1[class*="task-detail"],
+.dark h2[class*="task-detail"],
+.dark h3[class*="task-detail"],
+.dark h1[class*="modal"],
+.dark h2[class*="modal"],
+.dark h3[class*="modal"] {
+  color: #e2e8f0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+}
+
+/* Task Modal Body */
+.dark .task-modal-body,
+.dark .task-detail-body,
+.dark .modal-body,
+.dark [class*="task-modal-body"],
+.dark [class*="task-detail-body"],
+.dark [class*="modal-body"],
+.dark div[class*="task-modal-body"],
+.dark div[class*="task-detail-body"],
+.dark div[class*="modal-body"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  padding: 1.5rem !important;
+}
+
+/* Task description */
+.dark .task-description,
+.dark .task-content,
+.dark [class*="task-description"],
+.dark [class*="task-content"],
+.dark div[class*="task-description"],
+.dark div[class*="task-content"],
+.dark p[class*="task-description"],
+.dark p[class*="task-content"] {
+  color: #cbd5e1 !important;
+  background-color: transparent !important;
+  line-height: 1.6 !important;
+  font-size: 1rem !important;
+}
+
+/* Task metadata */
+.dark .task-metadata,
+.dark .task-info,
+.dark .task-meta,
+.dark .task-details-meta,
+.dark [class*="task-metadata"],
+.dark [class*="task-info"],
+.dark [class*="task-meta"],
+.dark div[class*="task-metadata"],
+.dark div[class*="task-info"],
+.dark div[class*="task-meta"] {
+  background-color: #263549 !important;
+  color: #e2e8f0 !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  border: 1px solid #334155 !important;
+}
+
+/* Task metadata rows */
+.dark .meta-row,
+.dark .info-row,
+.dark .detail-row,
+.dark [class*="meta-row"],
+.dark [class*="info-row"],
+.dark [class*="detail-row"],
+.dark div[class*="meta-row"],
+.dark div[class*="info-row"],
+.dark div[class*="detail-row"] {
+  background-color: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0.75rem !important;
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px solid #334155 !important;
+}
+
+.dark .meta-row:last-child,
+.dark .info-row:last-child,
+.dark .detail-row:last-child,
+.dark [class*="meta-row"]:last-child,
+.dark [class*="info-row"]:last-child,
+.dark [class*="detail-row"]:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* Task metadata labels */
+.dark .meta-label,
+.dark .info-label,
+.dark .detail-label,
+.dark [class*="meta-label"],
+.dark [class*="info-label"],
+.dark [class*="detail-label"],
+.dark div[class*="meta-label"],
+.dark div[class*="info-label"],
+.dark div[class*="detail-label"],
+.dark span[class*="meta-label"],
+.dark span[class*="info-label"],
+.dark span[class*="detail-label"] {
+  color: #94a3b8 !important;
+  width: 120px !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  background-color: transparent !important;
+}
+
+/* Task metadata values */
+.dark .meta-value,
+.dark .info-value,
+.dark .detail-value,
+.dark [class*="meta-value"],
+.dark [class*="info-value"],
+.dark [class*="detail-value"],
+.dark div[class*="meta-value"],
+.dark div[class*="info-value"],
+.dark div[class*="detail-value"],
+.dark span[class*="meta-value"],
+.dark span[class*="info-value"],
+.dark span[class*="detail-value"] {
+  color: #e2e8f0 !important;
+  flex: 1 !important;
+  font-size: 0.875rem !important;
+  background-color: transparent !important;
+}
+
+/* Task status and priority tags */
+.dark .task-modal .status-badge,
+.dark .task-detail .status-badge,
+.dark .task-modal .priority-badge,
+.dark .task-detail .priority-badge,
+.dark [class*="task-modal"] [class*="badge"],
+.dark [class*="task-detail"] [class*="badge"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.35rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Task modal assignee */
+.dark .task-assignee,
+.dark .assigned-to,
+.dark [class*="task-assignee"],
+.dark [class*="assigned-to"],
+.dark div[class*="task-assignee"],
+.dark div[class*="assigned-to"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  background-color: transparent !important;
+}
+
+.dark .assignee-avatar,
+.dark .assigned-avatar,
+.dark [class*="assignee-avatar"],
+.dark [class*="assigned-avatar"],
+.dark div[class*="assignee-avatar"],
+.dark div[class*="assigned-avatar"],
+.dark span[class*="assignee-avatar"],
+.dark span[class*="assigned-avatar"] {
+  background-color: #374151 !important;
+}
+
+.dark .assignee-name,
+.dark .assigned-name,
+.dark [class*="assignee-name"],
+.dark [class*="assigned-name"],
+.dark div[class*="assignee-name"],
+.dark div[class*="assigned-name"],
+.dark span[class*="assignee-name"],
+.dark span[class*="assigned-name"] {
+  color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
+}
+
+/* Task Modal Footer */
+.dark .task-modal-footer,
+.dark .task-detail-footer,
+.dark .modal-footer,
+.dark [class*="task-modal-footer"],
+.dark [class*="task-detail-footer"],
+.dark [class*="modal-footer"],
+.dark div[class*="task-modal-footer"],
+.dark div[class*="task-detail-footer"],
+.dark div[class*="modal-footer"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-top-color: #334155 !important;
+  padding: 1.25rem !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 1rem !important;
+  border-bottom-left-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+}
+
+/* Comments section */
+.dark .comments-section,
+.dark .task-comments,
+.dark [class*="comments-section"],
+.dark [class*="task-comments"],
+.dark div[class*="comments-section"],
+.dark div[class*="task-comments"] {
+  margin-top: 1.5rem !important;
+  background-color: transparent !important;
+}
+
+.dark .comments-header,
+.dark .comments-title,
+.dark [class*="comments-header"],
+.dark [class*="comments-title"],
+.dark div[class*="comments-header"],
+.dark div[class*="comments-title"],
+.dark h3[class*="comments"],
+.dark h4[class*="comments"] {
+  color: #e2e8f0 !important;
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+  background-color: transparent !important;
+}
+
+.dark .comment-item,
+.dark .comment,
+.dark [class*="comment-item"],
+.dark [class*="comment"],
+.dark div[class*="comment-item"],
+.dark div[class*="comment"] {
+  background-color: #263549 !important;
+  color: #e2e8f0 !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+  border: 1px solid #334155 !important;
+}
+
+.dark .comment-header,
+.dark [class*="comment-header"],
+.dark div[class*="comment-header"] {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+  background-color: transparent !important;
+}
+
+.dark .comment-author,
+.dark [class*="comment-author"],
+.dark div[class*="comment-author"],
+.dark span[class*="comment-author"] {
+  font-weight: 500 !important;
+  color: #e2e8f0 !important;
+  background-color: transparent !important;
+}
+
+.dark .comment-date,
+.dark [class*="comment-date"],
+.dark div[class*="comment-date"],
+.dark span[class*="comment-date"] {
+  color: #94a3b8 !important;
+  font-size: 0.75rem !important;
+  margin-left: auto !important;
+  background-color: transparent !important;
+}
+
+.dark .comment-content,
+.dark [class*="comment-content"],
+.dark div[class*="comment-content"],
+.dark p[class*="comment-content"] {
+  color: #cbd5e1 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  background-color: transparent !important;
+}
+
+/* Comment form */
+.dark .comment-form,
+.dark [class*="comment-form"],
+.dark form[class*="comment-form"],
+.dark div[class*="comment-form"] {
+  margin-top: 1rem !important;
+  background-color: transparent !important;
+}
+
+.dark .comment-input,
+.dark .comment-textarea,
+.dark [class*="comment-input"],
+.dark [class*="comment-textarea"],
+.dark textarea[class*="comment"],
+.dark input[class*="comment"] {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem !important;
+  width: 100% !important;
+  resize: vertical !important;
+  min-height: 100px !important;
+}
+
+.dark .comment-input:focus,
+.dark .comment-textarea:focus,
+.dark [class*="comment-input"]:focus,
+.dark [class*="comment-textarea"]:focus {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+  outline: none !important;
+}
+
+.dark .comment-submit,
+.dark [class*="comment-submit"],
+.dark button[class*="comment-submit"] {
+  background-color: #818cf8 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 500 !important;
+  margin-top: 0.5rem !important;
+  cursor: pointer !important;
+}
+
+/* Add animation for fade-in effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Style for active button states */
+.linear-btn-primary-active {
+  background-color: #4f46e5 !important;
+  color: white !important;
+}
+
+.linear-btn-secondary-active {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+.dark .linear-btn-primary-active {
+  background-color: #4338ca !important;
+}
+
+.dark .linear-btn-secondary-active {
+  background-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
